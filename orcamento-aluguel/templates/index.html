@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <title>Orçamento de Aluguel</title>
 
-    <!-- Importação do arquivo CSS -->
+    <!-- Importa o CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<!-- Container principal do site -->
+<!-- Container principal -->
 <div class="container">
 
-    <!-- Título da aplicação -->
+    <!-- Título -->
     <h1>Orçamento de Aluguel</h1>
 
-    <!-- Formulário que envia os dados para o Flask -->
+    <!-- Formulário -->
     <form method="post">
 
         <!-- Tipo de imóvel -->
@@ -28,31 +28,40 @@
 
         <!-- Quantidade de quartos -->
         <label>Quartos</label>
-        <input type="number" name="quartos" required>
+        <input type="number"
+               name="quartos"
+               min="1"
+               max="2"
+               required>
 
         <!-- Quantidade de vagas -->
         <label>Vagas</label>
-        <input type="number" name="vagas" required>
+        <input type="number"
+               name="vagas"
+               min="0"
+               max="10"
+               required>
 
-        <!-- Checkbox para crianças -->
+        <!-- Checkbox de crianças -->
         <label class="check">
             <input type="checkbox" name="criancas">
             Possui crianças
         </label>
 
-        <!-- Botão de envio -->
+        <!-- Botão -->
         <button type="submit">Calcular</button>
     </form>
 
-    <!-- Exibe o resultado apenas se existir -->
+    <!-- Resultado ou erro -->
     {% if resultado %}
         <div class="resultado">
-            Aluguel mensal: R$ {{ resultado }}
+            {{ resultado }}
         </div>
     {% endif %}
+
 </div>
 
-<!-- Rodapé com copyright -->
+<!-- Rodapé -->
 <footer>
     © 2026 t1ctack —
     <a href="https://www.instagram.com/luhisfelipe/" target="_blank">

@@ -4,64 +4,60 @@
     <meta charset="UTF-8">
     <title>Orçamento de Aluguel</title>
 
-    <!-- Importa o CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<!-- Container principal -->
 <div class="container">
-
-    <!-- Título -->
     <h1>Orçamento de Aluguel</h1>
 
-    <!-- Formulário -->
     <form method="post">
 
         <!-- Tipo de imóvel -->
         <label>Tipo de Imóvel</label>
         <select name="tipo" required>
-            <option>Apartamento</option>
-            <option>Casa</option>
-            <option>Estudio</option>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Estudio">Estúdio</option>
         </select>
 
-        <!-- Quantidade de quartos -->
-        <label>Quartos</label>
-        <input type="number"
-               name="quartos"
-               min="1"
-               max="2"
-               required>
+        <!-- Quartos (ATÉ 5) -->
+        <label>Quantidade de Quartos</label>
+        <input
+            type="number"
+            name="quartos"
+            min="1"
+            max="5"
+            required
+        >
 
-        <!-- Quantidade de vagas -->
-        <label>Vagas</label>
-        <input type="number"
-               name="vagas"
-               min="0"
-               max="10"
-               required>
+        <!-- Vagas -->
+        <label>Quantidade de Vagas</label>
+        <input
+            type="number"
+            name="vagas"
+            min="0"
+            max="10"
+            required
+        >
 
-        <!-- Checkbox de crianças -->
+        <!-- Crianças -->
         <label class="check">
             <input type="checkbox" name="criancas">
             Possui crianças
         </label>
 
-        <!-- Botão -->
-        <button type="submit">Calcular</button>
+        <button type="submit">Calcular Orçamento</button>
     </form>
 
-    <!-- Resultado ou erro -->
     {% if resultado %}
         <div class="resultado">
             {{ resultado }}
         </div>
     {% endif %}
-
 </div>
 
-<!-- Rodapé -->
 <footer>
     © 2026 t1ctack —
     <a href="https://www.instagram.com/luhisfelipe/" target="_blank">

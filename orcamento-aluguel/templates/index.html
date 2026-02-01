@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Orçamento de Aluguel</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -14,47 +12,39 @@
 
     <form method="post">
 
-        <!-- Tipo de imóvel -->
         <label>Tipo de Imóvel</label>
         <select name="tipo" required>
-            <option value="Apartamento">Apartamento</option>
-            <option value="Casa">Casa</option>
-            <option value="Estudio">Estúdio</option>
+            <option>Apartamento</option>
+            <option>Casa</option>
+            <option>Estudio</option>
         </select>
 
-        <!-- Quartos (ATÉ 5) -->
-        <label>Quantidade de Quartos</label>
-        <input
-            type="number"
-            name="quartos"
-            min="1"
-            max="5"
-            required
-        >
+        <label>Quartos</label>
+        <input type="number" name="quartos" min="1" max="5" required>
 
-        <!-- Vagas -->
-        <label>Quantidade de Vagas</label>
-        <input
-            type="number"
-            name="vagas"
-            min="0"
-            max="10"
-            required
-        >
+        <label>Vagas</label>
+        <input type="number" name="vagas" min="0" max="10" required>
 
-        <!-- Crianças -->
         <label class="check">
             <input type="checkbox" name="criancas">
             Possui crianças
         </label>
 
-        <button type="submit">Calcular Orçamento</button>
+        <button type="submit">Calcular</button>
     </form>
 
     {% if resultado %}
-        <div class="resultado">
+        <div class="resultado" id="resultado">
             {{ resultado }}
         </div>
+
+        <script>
+            // Remove o resultado após 5 segundos
+            setTimeout(() => {
+                const r = document.getElementById("resultado");
+                if (r) r.remove();
+            }, 5000);
+        </script>
     {% endif %}
 </div>
 
